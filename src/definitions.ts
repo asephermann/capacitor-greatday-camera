@@ -1,3 +1,10 @@
 export interface GreatDayCameraPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  getCamera(options?: CameraPluginOptions): Promise<any>;
+}
+
+export interface CameraPluginOptions {
+  photoName: string;
+  disableFacingBack:boolean;
+  quality: number;
+  maxSize: number;
 }

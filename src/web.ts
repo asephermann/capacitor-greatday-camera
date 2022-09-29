@@ -1,10 +1,9 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { GreatDayCameraPlugin } from './definitions';
+import type { CameraPluginOptions, GreatDayCameraPlugin } from './definitions';
 
 export class GreatDayCameraWeb extends WebPlugin implements GreatDayCameraPlugin {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+  async getCamera(_options?: CameraPluginOptions | undefined): Promise<any> {
+    throw new Error('Method not implemented.');
   }
 }
