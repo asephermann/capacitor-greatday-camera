@@ -52,21 +52,22 @@ class GreatDayCameraPlugin : Plugin() {
     private fun takePhoto(call: PluginCall, options: CameraPluginOptions) {
         cameraPlugin = CameraPlugin(activity)
         cameraPlugin!!.setCameraPluginListener(object : CameraPluginListener {
-            override fun onSuccess(photoPath: String) {
+            override fun onSuccess(photoPath: String, native: Boolean) {
                 val jsonLocation = JSONObject()
                 try {
                     jsonLocation.put("path", photoPath)
+                    jsonLocation.put("native", native)
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
                 val ret = JSObject()
-                ret.put("value", jsonLocation.toString())
+                ret.put("result", jsonLocation.toString())
                 call.resolve(ret)
             }
 
             override fun onCancel() {
                 val ret = JSObject()
-                ret.put("value", "cancelled")
+                ret.put("result", "cancelled")
                 call.resolve(ret)
             }
         })

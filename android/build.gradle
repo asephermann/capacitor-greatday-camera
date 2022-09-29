@@ -61,6 +61,5 @@ dependencies {
     implementation "androidx.core:core-ktx:1.6.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    api 'com.otaliastudios:cameraview:2.7.2'
-    implementation 'com.github.senjuid:AndroidCamera:v12.0'
+    implementation 'com.github.indodevniaga:AndroidCamera:12.2'
 }
