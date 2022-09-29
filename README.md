@@ -11,9 +11,41 @@ npx cap sync
 
 ## API
 
-<docgen-index></docgen-index>
+<docgen-index>
+
+* [`getCamera(...)`](#getcamera)
+* [Interfaces](#interfaces)
+
+</docgen-index>
 
 <docgen-api>
-<!-- run docgen to generate docs from the source -->
-<!-- More info: https://github.com/ionic-team/capacitor-docgen -->
+<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+### getCamera(...)
+
+```typescript
+getCamera(options?: CameraPluginOptions | undefined) => Promise<any>
+```
+
+| Param         | Type                                                                |
+| ------------- | ------------------------------------------------------------------- |
+| **`options`** | <code><a href="#camerapluginoptions">CameraPluginOptions</a></code> |
+
+**Returns:** <code>Promise&lt;any&gt;</code>
+
+--------------------
+
+
+### Interfaces
+
+
+#### CameraPluginOptions
+
+| Prop                    | Type                 |
+| ----------------------- | -------------------- |
+| **`photoName`**         | <code>string</code>  |
+| **`disableFacingBack`** | <code>boolean</code> |
+| **`quality`**           | <code>number</code>  |
+| **`maxSize`**           | <code>number</code>  |
+
 </docgen-api>
