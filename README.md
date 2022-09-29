@@ -14,6 +14,7 @@ npx cap sync
 <docgen-index>
 
 * [`getCamera(...)`](#getcamera)
+* [`getCameraSwap(...)`](#getcameraswap)
 * [Interfaces](#interfaces)
 
 </docgen-index>
@@ -36,16 +37,30 @@ getCamera(options?: CameraPluginOptions | undefined) => Promise<any>
 --------------------
 
 
+### getCameraSwap(...)
+
+```typescript
+getCameraSwap(options?: CameraPluginOptions | undefined) => Promise<any>
+```
+
+| Param         | Type                                                                |
+| ------------- | ------------------------------------------------------------------- |
+| **`options`** | <code><a href="#camerapluginoptions">CameraPluginOptions</a></code> |
+
+**Returns:** <code>Promise&lt;any&gt;</code>
+
+--------------------
+
+
 ### Interfaces
 
 
 #### CameraPluginOptions
 
-| Prop                    | Type                 |
-| ----------------------- | -------------------- |
-| **`photoName`**         | <code>string</code>  |
-| **`disableFacingBack`** | <code>boolean</code> |
-| **`quality`**           | <code>number</code>  |
-| **`maxSize`**           | <code>number</code>  |
+| Prop            | Type                |
+| --------------- | ------------------- |
+| **`photoName`** | <code>string</code> |
+| **`quality`**   | <code>number</code> |
+| **`maxSize`**   | <code>number</code> |
 
 </docgen-api>
