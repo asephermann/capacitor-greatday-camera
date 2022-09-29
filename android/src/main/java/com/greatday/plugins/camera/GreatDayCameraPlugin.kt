@@ -60,13 +60,13 @@ class GreatDayCameraPlugin : Plugin() {
                     e.printStackTrace()
                 }
                 val ret = JSObject()
-                ret.put("value", implementation.echo(jsonLocation.toString()))
+                ret.put("value", jsonLocation.toString())
                 call.resolve(ret)
             }
 
             override fun onCancel() {
                 val ret = JSObject()
-                ret.put("value", implementation.echo("cancelled"))
+                ret.put("value", "cancelled")
                 call.resolve(ret)
             }
         })
