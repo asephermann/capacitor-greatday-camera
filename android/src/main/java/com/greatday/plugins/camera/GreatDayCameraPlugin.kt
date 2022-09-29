@@ -17,18 +17,31 @@ class GreatDayCameraPlugin : Plugin() {
 
     private var cameraPlugin: CameraPlugin? = null
 
-    private val implementation = GreatDayCamera()
-
     @PluginMethod
     fun getCamera(call: PluginCall) {
         val photoName = call.getString("photoName")
         val quality = parseQuality(call.getString("quality"))
         val maxSize = parseMaxSize(call.getString("maxSize"))
-        val disableFacingBack = call.getBoolean("disableFacingBack")
 
         val options: CameraPluginOptions = CameraPluginOptions.Builder()
             .setName(photoName!!)
-            .setDisableFacingBack(disableFacingBack!!)
+            .setDisableFacingBack(true)
+            .setMaxSize(maxSize)
+            .setQuality(quality)
+            .build()
+
+        this.takePhoto(call, options)
+    }
+
+    @PluginMethod
+    fun getCameraSwap(call: PluginCall) {
+        val photoName = call.getString("photoName")
+        val quality = parseQuality(call.getString("quality"))
+        val maxSize = parseMaxSize(call.getString("maxSize"))
+
+        val options: CameraPluginOptions = CameraPluginOptions.Builder()
+            .setName(photoName!!)
+            .setDisableFacingBack(false)
             .setMaxSize(maxSize)
             .setQuality(quality)
             .build()
