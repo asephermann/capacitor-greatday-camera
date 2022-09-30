@@ -25,14 +25,14 @@ npx cap sync
 ### getCamera(...)
 
 ```typescript
-getCamera(options?: CameraPluginOptions | undefined) => Promise<any>
+getCamera(options?: CameraPluginOptions | undefined) => Promise<{ result: string; }>
 ```
 
 | Param         | Type                                                                |
 | ------------- | ------------------------------------------------------------------- |
 | **`options`** | <code><a href="#camerapluginoptions">CameraPluginOptions</a></code> |
 
-**Returns:** <code>Promise&lt;any&gt;</code>
+**Returns:** <code>Promise&lt;{ result: string; }&gt;</code>
 
 --------------------
 
@@ -40,14 +40,14 @@ getCamera(options?: CameraPluginOptions | undefined) => Promise<any>
 ### getCameraSwap(...)
 
 ```typescript
-getCameraSwap(options?: CameraPluginOptions | undefined) => Promise<any>
+getCameraSwap(options?: CameraPluginOptions | undefined) => Promise<{ result: string; }>
 ```
 
 | Param         | Type                                                                |
 | ------------- | ------------------------------------------------------------------- |
 | **`options`** | <code><a href="#camerapluginoptions">CameraPluginOptions</a></code> |
 
-**Returns:** <code>Promise&lt;any&gt;</code>
+**Returns:** <code>Promise&lt;{ result: string; }&gt;</code>
 
 --------------------
 
@@ -60,7 +60,7 @@ getCameraSwap(options?: CameraPluginOptions | undefined) => Promise<any>
 | Prop            | Type                |
 | --------------- | ------------------- |
 | **`photoName`** | <code>string</code> |
-| **`quality`**   | <code>number</code> |
-| **`maxSize`**   | <code>number</code> |
+| **`quality`**   | <code>string</code> |
+| **`maxSize`**   | <code>string</code> |
 
 </docgen-api>

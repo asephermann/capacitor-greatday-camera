@@ -1,10 +1,10 @@
 export interface GreatDayCameraPlugin {
-  getCamera(options?: CameraPluginOptions): Promise<any>;
-  getCameraSwap(options?: CameraPluginOptions): Promise<any>;
+  getCamera(options?: CameraPluginOptions): Promise<{result: string}>;
+  getCameraSwap(options?: CameraPluginOptions): Promise<{result: string}>;
 }
 
 export interface CameraPluginOptions {
   photoName: string;
-  quality: number;
-  maxSize: number;
+  quality: string;
+  maxSize: string;
 }

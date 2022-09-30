@@ -1,21 +1,26 @@
 package com.greatday.plugins.camera
 
+import android.app.Activity
+import androidx.activity.result.ActivityResult
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
 import com.getcapacitor.PluginCall
 import com.getcapacitor.PluginMethod
+import com.getcapacitor.annotation.ActivityCallback
 import com.getcapacitor.annotation.CapacitorPlugin
 import com.senjuid.camera.CameraPlugin
 import com.senjuid.camera.CameraPluginListener
 import com.senjuid.camera.CameraPluginOptions
+import org.jetbrains.annotations.NotNull
 import org.json.JSONException
 import org.json.JSONObject
 
 
-@CapacitorPlugin(name = "GreatDayCamera")
+@CapacitorPlugin(name = "GreatDayCamera", requestCodes = [CameraPlugin.REQUEST])
 class GreatDayCameraPlugin : Plugin() {
 
     private var cameraPlugin: CameraPlugin? = null
+    private var listener: CameraPluginListener? = null
 
     @PluginMethod
     fun getCamera(call: PluginCall) {
@@ -51,8 +56,8 @@ class GreatDayCameraPlugin : Plugin() {
 
     private fun takePhoto(call: PluginCall, options: CameraPluginOptions) {
         cameraPlugin = CameraPlugin(activity)
-        cameraPlugin!!.setCameraPluginListener(object : CameraPluginListener {
-            override fun onSuccess(photoPath: String, native: Boolean) {
+        listener = object : CameraPluginListener {
+            override fun onSuccess(@NotNull photoPath: String, native: Boolean) {
                 val jsonLocation = JSONObject()
                 try {
                     jsonLocation.put("path", photoPath)
@@ -70,13 +75,39 @@ class GreatDayCameraPlugin : Plugin() {
                 ret.put("result", "cancelled")
                 call.resolve(ret)
             }
-        })
+        }
+        cameraPlugin?.setCameraPluginListener(listener)
 
         startActivityForResult(
             call,
             cameraPlugin?.getIntent(options),
-            CameraPlugin.REQUEST
+            "requestCamera"
         )
+    }
+
+    @ActivityCallback
+    private fun requestCamera(call: PluginCall?, result: ActivityResult) {
+        if (call == null) {
+            return
+        }
+        if (result.resultCode == Activity.RESULT_OK) {
+            val performNativeCamera = result.data?.getBooleanExtra("native", false)
+            listener?.let {
+                val photoPath = result.data?.getStringExtra("photo")
+                if(performNativeCamera!!) {
+                    it.onSuccess("", true)
+                } else {
+                    if (photoPath != null) {
+                        it.onSuccess(photoPath, false)
+                    } else {
+                        it.onCancel()
+                    }
+                }
+            }
+        } else {
+            listener?.onCancel()
+        }
+        // Do something with the result data
     }
 
     private fun parseQuality(qualityStr: String?): Int {
