@@ -107,7 +107,6 @@ class GreatDayCameraPlugin : Plugin() {
         } else {
             listener?.onCancel()
         }
-        // Do something with the result data
     }
 
     private fun parseQuality(qualityStr: String?): Int {
