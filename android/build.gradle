@@ -12,7 +12,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
+        classpath 'com.android.tools.build:gradle:8.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -64,3 +64,4 @@ dependencies {
     implementation 'com.otaliastudios:cameraview:2.7.2'
     implementation 'com.github.asephermann:AndroidCamera:12.3'
 }
+
