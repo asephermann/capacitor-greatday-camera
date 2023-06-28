@@ -27,12 +27,16 @@ class GreatDayCameraPlugin : Plugin() {
         val photoName = call.getString("photoName")
         val quality = parseQuality(call.getString("quality"))
         val maxSize = parseMaxSize(call.getString("maxSize"))
+        val isFacingBack = call.getBoolean("isFacingBack",true)
+        val showFaceArea = call.getBoolean("showFaceArea", false)
 
         val options: CameraPluginOptions = CameraPluginOptions.Builder()
             .setName(photoName!!)
             .setDisableFacingBack(true)
             .setMaxSize(maxSize)
             .setQuality(quality)
+            .setIsFacingBack(isFacingBack!!)
+            .setShowFaceArea(showFaceArea!!)
             .build()
 
         this.takePhoto(call, options)
@@ -43,12 +47,16 @@ class GreatDayCameraPlugin : Plugin() {
         val photoName = call.getString("photoName")
         val quality = parseQuality(call.getString("quality"))
         val maxSize = parseMaxSize(call.getString("maxSize"))
+        val isFacingBack = call.getBoolean("isFacingBack",true)
+        val showFaceArea = call.getBoolean("showFaceArea", false)
 
         val options: CameraPluginOptions = CameraPluginOptions.Builder()
             .setName(photoName!!)
             .setDisableFacingBack(false)
             .setMaxSize(maxSize)
             .setQuality(quality)
+            .setIsFacingBack(isFacingBack!!)
+            .setShowFaceArea(showFaceArea!!)
             .build()
 
         this.takePhoto(call, options)
@@ -110,13 +118,13 @@ class GreatDayCameraPlugin : Plugin() {
     }
 
     private fun parseQuality(qualityStr: String?): Int {
-        return if (qualityStr != null && qualityStr.isNotEmpty()) {
+        return if (!qualityStr.isNullOrEmpty()) {
             qualityStr.toInt()
         } else 100
     }
 
     private fun parseMaxSize(maxSizeStr: String?): Int {
-        return if (maxSizeStr != null && maxSizeStr.isNotEmpty()) {
+        return if (!maxSizeStr.isNullOrEmpty()) {
             maxSizeStr.toInt()
         } else 1024
     }
