@@ -48,6 +48,7 @@ class GreatDayCameraPlugin : Plugin() {
         val quality = parseQuality(call.getString("quality"))
         val maxSize = parseMaxSize(call.getString("maxSize"))
         val isFacingBack = call.getBoolean("isFacingBack",true)
+        val disablePreview = call.getBoolean("disablePreview",true)
         val showFaceArea = call.getBoolean("showFaceArea", false)
 
         val options: CameraPluginOptions = CameraPluginOptions.Builder()
@@ -56,6 +57,7 @@ class GreatDayCameraPlugin : Plugin() {
             .setMaxSize(maxSize)
             .setQuality(quality)
             .setIsFacingBack(isFacingBack!!)
+            .setDisablePreview(disablePreview!!)
             .setShowFaceArea(showFaceArea!!)
             .build()
 

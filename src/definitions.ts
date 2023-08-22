@@ -8,5 +8,6 @@ export interface CameraPluginOptions {
   quality: string;
   maxSize: string;
   isFacingBack?: boolean;
+  disablePreview?: boolean;
   showFaceArea?: boolean;
 }
