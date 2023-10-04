@@ -27,7 +27,7 @@ class GreatDayCameraPlugin : Plugin() {
         val photoName = call.getString("photoName")
         val quality = parseQuality(call.getString("quality"))
         val maxSize = parseMaxSize(call.getString("maxSize"))
-        val isFacingBack = call.getBoolean("isFacingBack",true)
+        val isFacingBack = call.getBoolean("isFacingBack", true)
         val showFaceArea = call.getBoolean("showFaceArea", false)
 
         val options: CameraPluginOptions = CameraPluginOptions.Builder()
@@ -47,8 +47,8 @@ class GreatDayCameraPlugin : Plugin() {
         val photoName = call.getString("photoName")
         val quality = parseQuality(call.getString("quality"))
         val maxSize = parseMaxSize(call.getString("maxSize"))
-        val isFacingBack = call.getBoolean("isFacingBack",true)
-        val disablePreview = call.getBoolean("disablePreview",true)
+        val isFacingBack = call.getBoolean("isFacingBack", true)
+        val disablePreview = call.getBoolean("disablePreview", true)
         val showFaceArea = call.getBoolean("showFaceArea", false)
 
         val options: CameraPluginOptions = CameraPluginOptions.Builder()
@@ -104,11 +104,15 @@ class GreatDayCameraPlugin : Plugin() {
             val performNativeCamera = result.data?.getBooleanExtra("native", false)
             listener?.let {
                 val photoPath = result.data?.getStringExtra("photo")
-                if(performNativeCamera!!) {
+                if (performNativeCamera!!) {
                     it.onSuccess("", true)
                 } else {
                     if (photoPath != null) {
-                        it.onSuccess(photoPath, false)
+                        if (photoPath != "") {
+                            it.onSuccess(photoPath, false)
+                        } else {
+                            it.onSuccess("", true)
+                        }
                     } else {
                         it.onCancel()
                     }
