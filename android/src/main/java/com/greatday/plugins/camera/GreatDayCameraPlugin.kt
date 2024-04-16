@@ -67,11 +67,12 @@ class GreatDayCameraPlugin : Plugin() {
     private fun takePhoto(call: PluginCall, options: CameraPluginOptions) {
         cameraPlugin = CameraPlugin(activity)
         listener = object : CameraPluginListener {
-            override fun onSuccess(@NotNull photoPath: String, native: Boolean) {
+            override fun onSuccess(@NotNull photoPath: String, native: Boolean, crash: Boolean) {
                 val jsonLocation = JSONObject()
                 try {
                     jsonLocation.put("path", photoPath)
                     jsonLocation.put("native", native)
+                    jsonLocation.put("crash", crash)
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
@@ -101,23 +102,13 @@ class GreatDayCameraPlugin : Plugin() {
             return
         }
         if (result.resultCode == Activity.RESULT_OK) {
-            val performNativeCamera = result.data?.getBooleanExtra("native", false)
-            listener?.let {
-                val photoPath = result.data?.getStringExtra("photo")
-                if (performNativeCamera!!) {
-                    it.onSuccess("", true)
-                } else {
-                    if (photoPath != null) {
-                        if (photoPath != "") {
-                            it.onSuccess(photoPath, false)
-                        } else {
-                            it.onSuccess("", true)
-                        }
-                    } else {
-                        it.onCancel()
-                    }
-                }
-            }
+            val performNativeCamera = result.data?.getBooleanExtra("native", false) ?: false
+            val isCrash = result.data?.getBooleanExtra("crash", false) ?: false
+            val photoPath = result.data?.getStringExtra("photo") ?: ""
+            val native = performNativeCamera || photoPath.isEmpty()
+            val crash = isCrash || photoPath.isEmpty()
+
+            listener?.onSuccess(photoPath, native, crash)
         } else {
             listener?.onCancel()
         }
