@@ -33,6 +33,7 @@ class GreatDayCameraPlugin : Plugin() {
         val options: CameraPluginOptions = CameraPluginOptions.Builder()
             .setName(photoName!!)
             .setDisableFacingBack(true)
+            .setDisableMirroring(true)
             .setMaxSize(maxSize)
             .setQuality(quality)
             .setIsFacingBack(isFacingBack!!)
@@ -54,6 +55,7 @@ class GreatDayCameraPlugin : Plugin() {
         val options: CameraPluginOptions = CameraPluginOptions.Builder()
             .setName(photoName!!)
             .setDisableFacingBack(false)
+            .setDisableMirroring(true)
             .setMaxSize(maxSize)
             .setQuality(quality)
             .setIsFacingBack(isFacingBack!!)
@@ -73,7 +75,6 @@ class GreatDayCameraPlugin : Plugin() {
                     jsonLocation.put("path", photoPath)
                     jsonLocation.put("native", native)
                     jsonLocation.put("crash", crash)
-                    jsonLocation.put("direction", if (options.isFacingBack == true) "REAR" else "FRONT")
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
