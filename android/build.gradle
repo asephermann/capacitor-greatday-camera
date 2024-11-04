@@ -63,6 +63,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation 'com.otaliastudios:cameraview:2.7.2'
-    implementation 'com.github.asephermann:AndroidCamera:14.2.0'
+    implementation 'com.github.asephermann:AndroidCamera:14.3.0'
 }
 
