@@ -4,6 +4,7 @@ export interface GreatDayCameraPlugin {
 }
 
 export interface CameraPluginOptions {
+  cameraSource?: string;
   photoName: string;
   quality: string;
   maxSize: string;

@@ -24,6 +24,7 @@ class GreatDayCameraPlugin : Plugin() {
 
     @PluginMethod
     fun getCamera(call: PluginCall) {
+        val cameraSource = call.getString("cameraSource", "Cam 1")
         val photoName = call.getString("photoName")
         val quality = parseQuality(call.getString("quality"))
         val maxSize = parseMaxSize(call.getString("maxSize"))
@@ -31,6 +32,7 @@ class GreatDayCameraPlugin : Plugin() {
         val showFaceArea = call.getBoolean("showFaceArea", false)
 
         val options: CameraPluginOptions = CameraPluginOptions.Builder()
+            .setCameraSource(cameraSource!!)
             .setName(photoName!!)
             .setDisableFacingBack(true)
             .setDisableMirroring(true)
@@ -45,6 +47,7 @@ class GreatDayCameraPlugin : Plugin() {
 
     @PluginMethod
     fun getCameraSwap(call: PluginCall) {
+        val cameraSource = call.getString("cameraSource", "Cam 1")
         val photoName = call.getString("photoName")
         val quality = parseQuality(call.getString("quality"))
         val maxSize = parseMaxSize(call.getString("maxSize"))
@@ -53,6 +56,7 @@ class GreatDayCameraPlugin : Plugin() {
         val showFaceArea = call.getBoolean("showFaceArea", false)
 
         val options: CameraPluginOptions = CameraPluginOptions.Builder()
+            .setCameraSource(cameraSource!!)
             .setName(photoName!!)
             .setDisableFacingBack(false)
             .setDisableMirroring(true)

@@ -59,6 +59,7 @@ getCameraSwap(options?: CameraPluginOptions | undefined) => Promise<{ result: st
 
 | Prop                 | Type                 |
 | -------------------- | -------------------- |
+| **`cameraSource`**   | <code>string</code>  |
 | **`photoName`**      | <code>string</code>  |
 | **`quality`**        | <code>string</code>  |
 | **`maxSize`**        | <code>string</code>  |
