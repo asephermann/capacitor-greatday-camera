@@ -11,4 +11,5 @@ export interface CameraPluginOptions {
   isFacingBack?: boolean;
   disablePreview?: boolean;
   showFaceArea?: boolean;
+  showNativeCameraButton?: boolean;
 }

@@ -57,14 +57,15 @@ getCameraSwap(options?: CameraPluginOptions | undefined) => Promise<{ result: st
 
 #### CameraPluginOptions
 
-| Prop                 | Type                 |
-| -------------------- | -------------------- |
-| **`cameraSource`**   | <code>string</code>  |
-| **`photoName`**      | <code>string</code>  |
-| **`quality`**        | <code>string</code>  |
-| **`maxSize`**        | <code>string</code>  |
-| **`isFacingBack`**   | <code>boolean</code> |
-| **`disablePreview`** | <code>boolean</code> |
-| **`showFaceArea`**   | <code>boolean</code> |
+| Prop                         | Type                 |
+| ---------------------------- | -------------------- |
+| **`cameraSource`**           | <code>string</code>  |
+| **`photoName`**              | <code>string</code>  |
+| **`quality`**                | <code>string</code>  |
+| **`maxSize`**                | <code>string</code>  |
+| **`isFacingBack`**           | <code>boolean</code> |
+| **`disablePreview`**         | <code>boolean</code> |
+| **`showFaceArea`**           | <code>boolean</code> |
+| **`showNativeCameraButton`** | <code>boolean</code> |
 
 </docgen-api>

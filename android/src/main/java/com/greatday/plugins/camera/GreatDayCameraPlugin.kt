@@ -30,6 +30,7 @@ class GreatDayCameraPlugin : Plugin() {
         val maxSize = parseMaxSize(call.getString("maxSize"))
         val isFacingBack = call.getBoolean("isFacingBack", true)
         val showFaceArea = call.getBoolean("showFaceArea", false)
+        val showNativeCameraButton = call.getBoolean("showNativeCameraButton", true)
 
         val options: CameraPluginOptions = CameraPluginOptions.Builder()
             .setCameraSource(cameraSource!!)
@@ -40,6 +41,7 @@ class GreatDayCameraPlugin : Plugin() {
             .setQuality(quality)
             .setIsFacingBack(isFacingBack!!)
             .setShowFaceArea(showFaceArea!!)
+            .setShowNativeCameraButton(showNativeCameraButton!!)
             .build()
 
         this.takePhoto(call, options)
@@ -54,6 +56,7 @@ class GreatDayCameraPlugin : Plugin() {
         val isFacingBack = call.getBoolean("isFacingBack", true)
         val disablePreview = call.getBoolean("disablePreview", true)
         val showFaceArea = call.getBoolean("showFaceArea", false)
+        val showNativeCameraButton = call.getBoolean("showNativeCameraButton", true)
 
         val options: CameraPluginOptions = CameraPluginOptions.Builder()
             .setCameraSource(cameraSource!!)
@@ -65,6 +68,7 @@ class GreatDayCameraPlugin : Plugin() {
             .setIsFacingBack(isFacingBack!!)
             .setDisablePreview(disablePreview!!)
             .setShowFaceArea(showFaceArea!!)
+            .setShowNativeCameraButton(showNativeCameraButton!!)
             .build()
 
         this.takePhoto(call, options)
